@@ -75,6 +75,8 @@ app.post('/api/createUser', function(req, res) {
 });
 
 app.post('/api/sendTable', function (req, res) {
+    console.log("received table!\n" + "players are:\n");
+    console.log(players[0] + " and " + players[1]);
     if((!players[0] && req.body.player != players[1]) || (!players[1] && req.body.player != players[0])) players.push(req.body.player)
     if(players[0] === req.body.player)
         table1 = req.body.table
@@ -120,7 +122,9 @@ app.post('/api/make-guess', function(req, res) {
 })
 
 app.get('/api/reset-game', function(req, res) {
+    console.log("Resetting game!");
     resetGame();
+    console.log("Game has been reset!");
 })
 
 app.get('/api/gameStarted', function(req, res) {
