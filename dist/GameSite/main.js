@@ -49,7 +49,8 @@ class UserService {
         this.http = http;
         this.route = route;
         this.loggedIn = false;
-        this.url = "http://localhost:3030/api/";
+        //url = "http://localhost:3030/api/";
+        this.url = "https://unogamesite-me-cwv9l.ondigitalocean.app/api/";
     }
     canActivate() {
         if (sessionStorage.getItem('currentUser'))
@@ -434,7 +435,8 @@ class BattleshipComponent {
         ];
         this.winnerFound = false;
         this.horizontal = true;
-        this.url = "http://localhost:3030/api/";
+        //url = "http://localhost:3030/api/"
+        this.url = "https://unogamesite-me-cwv9l.ondigitalocean.app/api/";
     }
     ngOnInit() {
         var call = this.http.get(this.url + "gameStarted");
@@ -464,7 +466,7 @@ class BattleshipComponent {
         return this.http.post(this.url + 'logout', { 'user': sessionStorage.getItem('currentUser') });
     }
     clickReset() {
-        this.resetGame().subscribe();
+        this.resetGame().pipe();
         this.gameStarted = false;
     }
     resetGame() {
@@ -665,7 +667,7 @@ class BattleshipComponent {
                 this.select = false;
             }
             console.log('Got here!');
-            this.sendTable().subscribe(data => { });
+            this.sendTable().pipe();
             this.gameStarted = true;
             sessionStorage.setItem('gameStarted', 'true');
         }
