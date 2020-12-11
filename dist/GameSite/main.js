@@ -450,7 +450,7 @@ class BattleshipComponent {
             }
         }
         //emit value in sequence every 5 seconds
-        const source = Object(rxjs__WEBPACK_IMPORTED_MODULE_2__["interval"])(5000);
+        const source = Object(rxjs__WEBPACK_IMPORTED_MODULE_2__["interval"])(2000);
         this.subscription = source.subscribe(val => {
             if (this.gameStarted)
                 this.getTable();
