@@ -75,8 +75,7 @@ app.post('/api/createUser', function(req, res) {
 });
 
 app.post('/api/sendTable', function (req, res) {
-    console.log("received table!\n" + "players are:\n");
-    console.log(players[0] + " and " + players[1]);
+    console.log("received table!\n");
     if((!players[0] && req.body.player != players[1]) || (!players[1] && req.body.player != players[0])) players.push(req.body.player)
     if(players[0] === req.body.player)
         table1 = req.body.table
@@ -86,6 +85,7 @@ app.post('/api/sendTable', function (req, res) {
         console.log("started!\n" + table1 +"\n"+table2);
         gameStarted = true;
     }
+    console.log("players are:\n" + players[0] + " and " + players[1]);
     res.send("Received table!");
 })
 
