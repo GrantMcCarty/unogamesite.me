@@ -86,7 +86,7 @@ app.post('/api/sendTable', function (req, res) {
         gameStarted = true;
     }
     console.log("players are:\n" + players[0] + " and " + players[1]);
-    res.send("Received table!");
+    res.json({'data':'Received table!'});
 })
 
 app.post('/api/getTable', function(req, res){
@@ -125,7 +125,7 @@ app.post('/api/make-guess', function(req, res) {
 app.get('/api/reset-game', function(req, res) {
     resetGame();
     console.log("Game has been reset!");
-    res.send("reset game!");
+    res.json({'data':'reset game!'});
 })
 
 app.get('/api/gameStarted', function(req, res) {
