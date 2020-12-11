@@ -86,6 +86,7 @@ app.post('/api/sendTable', function (req, res) {
         console.log("started!\n" + table1 +"\n"+table2);
         gameStarted = true;
     }
+    res.send("Received table!");
 })
 
 app.post('/api/getTable', function(req, res){
@@ -122,9 +123,9 @@ app.post('/api/make-guess', function(req, res) {
 })
 
 app.get('/api/reset-game', function(req, res) {
-    console.log("Resetting game!");
     resetGame();
     console.log("Game has been reset!");
+    res.send("reset game!");
 })
 
 app.get('/api/gameStarted', function(req, res) {

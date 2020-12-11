@@ -50,7 +50,7 @@ class UserService {
         this.route = route;
         this.loggedIn = false;
         //url = "http://localhost:3030/api/";
-        this.url = "https://unogamesite-me-cwv9l.ondigitalocean.app/api/";
+        this.url = "https://unogamesite.me/api/";
     }
     canActivate() {
         if (sessionStorage.getItem('currentUser'))
@@ -436,7 +436,7 @@ class BattleshipComponent {
         this.winnerFound = false;
         this.horizontal = true;
         //url = "http://localhost:3030/api/"
-        this.url = "https://unogamesite-me-cwv9l.ondigitalocean.app/api/";
+        this.url = "https://unogamesite.me/api/";
     }
     ngOnInit() {
         var call = this.http.get(this.url + "gameStarted");
@@ -449,8 +449,8 @@ class BattleshipComponent {
                 //TODO place ships
             }
         }
-        //emit value in sequence every 1 second
-        const source = Object(rxjs__WEBPACK_IMPORTED_MODULE_2__["interval"])(1000);
+        //emit value in sequence every 5 seconds
+        const source = Object(rxjs__WEBPACK_IMPORTED_MODULE_2__["interval"])(5000);
         this.subscription = source.subscribe(val => {
             if (this.gameStarted)
                 this.getTable();
@@ -466,7 +466,9 @@ class BattleshipComponent {
         return this.http.post(this.url + 'logout', { 'user': sessionStorage.getItem('currentUser') });
     }
     clickReset() {
-        this.resetGame().pipe();
+        this.resetGame().subscribe(data => {
+            console.log(data);
+        });
         this.gameStarted = false;
     }
     resetGame() {
@@ -667,7 +669,9 @@ class BattleshipComponent {
                 this.select = false;
             }
             console.log('Got here!');
-            this.sendTable().pipe();
+            this.sendTable().subscribe(data => {
+                console.log(data);
+            });
             this.gameStarted = true;
             sessionStorage.setItem('gameStarted', 'true');
         }
